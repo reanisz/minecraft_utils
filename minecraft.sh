@@ -41,14 +41,20 @@ function send_message(){
 
 function cmd_start(){
     require stopped
+
     echo "Start minecraft."
     screen -AmdS $SESSION_NAME $ROOT/minecraft_loop.sh
 }
 function cmd_stop(){
     require running
+
     echo "Stop minecraft."
     touch /tmp/stop_minecraft
     send_command "stop"
+}
+function cmd_send_message(){
+    require running
+    send_message "$@"
 }
 function cmd_help(){
     echo "This is help."
@@ -68,7 +74,7 @@ case $command in
         cmd_stop
         ;;
     send_message)
-        send_message "$@"
+        cmd_send_message "$@"
         ;;
     is_running)
         cmd_is_running
