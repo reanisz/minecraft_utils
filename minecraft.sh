@@ -4,6 +4,9 @@ source ./default_settings.conf
 if [[ -f ~/.minecraft.conf ]]; then
     source ~/.minecraft.conf
 fi
+if [[ -f .minecraft.conf ]]; then
+    source .minecraft.conf
+fi
 
 ROOT=$(cd $(dirname $0);pwd)
 

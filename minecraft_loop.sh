@@ -1,7 +1,11 @@
 #!/bin/bash
 
+source ./default_settings.conf
 if [[ -f ~/.minecraft.conf ]]; then
     source ~/.minecraft.conf
+fi
+if [[ -f .minecraft.conf ]]; then
+    source .minecraft.conf
 fi
 
 cd $MINECRAFT_DIR

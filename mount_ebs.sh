@@ -3,7 +3,13 @@
 # EBSをmountするスクリプト
 # by http://qiita.com/web_se/items/6dc70a3d09b2e7dc5f28
 
-SERVER_VOLUME_ID="vol-xxx"
+source ./default_settings.conf
+if [[ -f ~/.minecraft.conf ]]; then
+    source ~/.minecraft.conf
+fi
+if [[ -f .minecraft.conf ]]; then
+    source .minecraft.conf
+fi
 
 cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
