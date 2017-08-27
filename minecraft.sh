@@ -91,6 +91,12 @@ case $command in
     command)
         cmd_command "$@"
         ;;
+    get_players)
+        cmd_command "list"
+        ;;
+    get_players_num)
+        cmd_command "list" | perl -nle 'if(/There are (\d+)\/(\d+) players online/){ print $1;}'
+        ;;
     *)
         cmd_help
         ;;
