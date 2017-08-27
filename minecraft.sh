@@ -61,6 +61,10 @@ function cmd_send_message(){
     require running
     send_message "$@"
 }
+function cmd_command(){
+    require running
+    send_command "$@"
+}
 function cmd_help(){
     echo "This is help."
 }
@@ -83,6 +87,9 @@ case $command in
         ;;
     is_running)
         cmd_is_running
+        ;;
+    command)
+        comd_command "$@"
         ;;
     *)
         cmd_help
