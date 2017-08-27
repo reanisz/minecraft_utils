@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ROOT=$(cd $(dirname $0);pwd)
+cd $ROOT
+
 source ./default_settings.conf
 if [[ -f ~/.minecraft.conf ]]; then
     source ~/.minecraft.conf
@@ -8,9 +11,7 @@ if [[ -f .minecraft.conf ]]; then
     source .minecraft.conf
 fi
 
-ROOT=$(cd $(dirname $0);pwd)
-
-PLAYER_NUM=`$ROOT/minecraft.sh get_players_num`
+PLAYER_NUM=`minecraft.sh get_players_num`
 
 NAMESPACE="Minecraft"
 DIMENSIONS="InstanceId=$SERVER_INSTANCE_ID"
