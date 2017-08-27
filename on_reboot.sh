@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ROOT=$(cd $(dirname $0);pwd)
+cd $ROOT
 
-$ROOT/mount_ebs.sh
-$ROOT/minecraft.sh start
+./mount_ebs.sh
+./minecraft.sh start
