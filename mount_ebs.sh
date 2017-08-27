@@ -13,8 +13,6 @@ fi
 
 cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-export AWS_DEFAULT_REGION=ap-northeast-1
-
 INSTANCE_ID=`wget -q -O - http://169.254.169.254/latest/meta-data/instance-id`
 
 while [ "$state" != "running" ]

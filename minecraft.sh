@@ -9,7 +9,6 @@ if [[ -f .minecraft.conf ]]; then
 fi
 
 ROOT=$(cd $(dirname $0);pwd)
-
 screen -ls | grep "minecraft" > /dev/null 2> /dev/null
 IS_RUNNING=$?
 
@@ -35,7 +34,10 @@ function require(){
 }
 
 function send_command(){
-    eval "screen -S $SESSION_NAME -p 0 -X eval 'stuff \"$1\015\"'"
+    pre_log_len=`wc -l "$MINECRAFT_DIR/logs/latest.log" | awk '{print $1}'`
+    eval "screen -p 0 -S minecraft -X eval 'stuff \"$1\"\015'"
+    sleep .1
+    tail -n $[`wc -l "$MINECRAFT_DIR/logs/latest.log" | awk '{print $1}'`-$pre_log_len] "$MINECRAFT_DIR/logs/latest.log"
 }
 function send_message(){
     echo "Send Message: $1"
