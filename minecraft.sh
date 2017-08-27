@@ -89,7 +89,7 @@ case $command in
         cmd_is_running
         ;;
     command)
-        comd_command "$@"
+        cmd_command "$@"
         ;;
     *)
         cmd_help
