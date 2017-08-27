@@ -27,8 +27,10 @@ state=`echo $result | cut -d '"' -f 2`
 echo $state
 done
 
-# attach to the EBS volume and wait for attachment to complete
-aws ec2 attach-volume  --volume-id $SERVER_VOLUME_ID --instance-id $INSTANCE_ID --device  /dev/sdf
+if [ ! -e /dev/xvdf ]; then
+    # attach to the EBS volume and wait for attachment to complete
+    aws ec2 attach-volume  --volume-id $SERVER_VOLUME_ID --instance-id $INSTANCE_ID --device  /dev/sdf
+fi
 
 while [ ! -e /dev/xvdf ]
 do
@@ -37,10 +39,5 @@ do
 done
 
 # mount it
-chown ec2-user:ec2-user /mc_server
-
-cat >>/etc/fstab <<EOF
-/dev/xvdf /mc_server ext4 defaults 1 1
-EOF
-
-mount -a
+sudo chown ec2-user:ec2-user /mc_server
+sudo mount -t ext4 /dev/xvdf /mc_server/
