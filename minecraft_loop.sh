@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ROOT=$(cd $(dirname $0);pwd)
+cd $ROOT
+
 source ./default_settings.conf
 if [[ -f ~/.minecraft.conf ]]; then
     source ~/.minecraft.conf

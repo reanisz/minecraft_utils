@@ -2,5 +2,7 @@
 
 ROOT=$(cd $(dirname $0);pwd)
 
-$ROOT/mount_ebs.sh
-$ROOT/minecraft.sh start
+cd $ROOT
+
+mount_ebs.sh
+minecraft.sh start
