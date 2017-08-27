@@ -30,7 +30,7 @@ aws ec2 attach-volume  --volume-id $SERVER_VOLUME_ID --instance-id $INSTANCE_ID 
 while [ ! -e /dev/xvdf ]
 do
   echo "Waiting for disk to appear.."
-  sleep 30
+  sleep 3
 done
 
 # mount it
