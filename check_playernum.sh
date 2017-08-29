@@ -22,6 +22,7 @@ echo "$DATE $PLAYER_NUM" >> /tmp/log_minecraft_playernum
 
 if tail -n 6 /tmp/log_minecraft_playernum | cut -d ' ' -f 2 | grep -v '^0$' > /dev/null 2> /dev/null; then
     # 0じゃない行がある = 計測6回以内に1人以上参加者が居た
+    :
 else
     # 0じゃない行がない = 計測6回以内に誰もログインしていない
     if ./minecraft.sh is_running; then
