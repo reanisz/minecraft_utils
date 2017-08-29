@@ -11,7 +11,7 @@ if [[ -f .minecraft.conf ]]; then
     source .minecraft.conf
 fi
 
-PLAYER_NUM=`minecraft.sh get_players_num`
+PLAYER_NUM=`./minecraft.sh get_players_num`
 
 NAMESPACE="Minecraft"
 DIMENSIONS="InstanceId=$SERVER_INSTANCE_ID"
