@@ -27,12 +27,12 @@ else
     # 0じゃない行がない = 計測6回以内に誰もログインしていない
     if ./minecraft.sh is_running; then
         ./minecraft.sh stop
-        shutdown -h +5 
+        sudo shutdown -h +5 
         while ./minecraft.sh is_running; do
             sleep 30
         done
-        shutdown -h now
+        sudo shutdown -h now
     else
-        shutdown -h now
+        sudo shutdown -h now
     fi
 fi
