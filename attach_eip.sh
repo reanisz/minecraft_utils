@@ -16,5 +16,10 @@ fi
 source ./get_aws_conf.sh
 
 export AWS_DEFAULT_REGION="$SERVER_REGION"
+OLD_ATTACHMENT_ID=`aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[] | select(.NetworkInterfaceId == "$SERVER_EIP_ID") | .Attachment.AttachmentId'`
 
-aws ec2 attach-network-interface --instance-id $SERVER_INSTANCE_ID --network-interface-id $SERVER_EIP_ID --device-index 1
+if [[ $OLD_ATTACHMENT_ID != "" ]]; then
+    aws ec2 detach-network-interface --attachment-id $OLD_ATTACHMENT_ID
+fi
+
+aws ec2 attach-network-interface --instance-id $SERVER_INSTANCE_ID --network-interface-id $SERVER_EIP_ID --device-index 0
