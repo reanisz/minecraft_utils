@@ -17,8 +17,6 @@ source ./get_aws_conf.sh
 
 export AWS_DEFAULT_REGION="$SERVER_REGION"
 
-cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-
 INSTANCE_ID=`wget -q -O - http://169.254.169.254/latest/meta-data/instance-id`
 
 while [ "$state" != "running" ]
