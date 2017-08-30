@@ -29,7 +29,7 @@ do
         exit
     else
         $JAVA_COMMAND $JVM_OPTION \
-            -Xms $JVM_OPTION_Xms -Xmx $JVM_OPTION_Xmx \
+            -Xms$JVM_OPTION_Xms -Xmx$JVM_OPTION_Xmx \
             -jar $JARFILE nogui
     fi
 
