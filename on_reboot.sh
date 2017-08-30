@@ -4,7 +4,7 @@ ROOT=$(cd $(dirname $0);pwd)
 cd $ROOT
 
 # 最新の設定に更新する
-git fetch
+git fetch origin $(git rev-parse --abbrev-ref HEAD)
 git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
 
 rm /tmp/log_minecraft_playernum
