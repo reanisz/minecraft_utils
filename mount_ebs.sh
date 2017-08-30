@@ -8,20 +8,16 @@ cd $ROOT
 
 source ./load_settings.sh
 
-export AWS_DEFAULT_REGION="$SERVER_REGION"
-
-INSTANCE_ID=`wget -q -O - http://169.254.169.254/latest/meta-data/instance-id`
-
 while [ "$state" != "running" ]
 do
-result=`aws ec2 describe-instances --filters Name=instance-id,Values=$INSTANCE_ID | jq '.Reservations[].Instances[].State.Name' | grep running`
+result=`aws ec2 describe-instances --filters Name=instance-id,Values=$SERVER_INSTANCE_ID | jq '.Reservations[].Instances[].State.Name' | grep running`
 state=`echo $result | cut -d '"' -f 2`
 echo $state
 done
 
 if [ ! -e /dev/xvdf ]; then
     # attach to the EBS volume and wait for attachment to complete
-    aws ec2 attach-volume  --volume-id $SERVER_VOLUME_ID --instance-id $INSTANCE_ID --device  /dev/sdf
+    aws ec2 attach-volume  --volume-id $SERVER_VOLUME_ID --instance-id $SERVER_INSTANCE_ID --device  /dev/sdf
 fi
 
 while [ ! -e /dev/xvdf ]
