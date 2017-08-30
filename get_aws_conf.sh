@@ -2,7 +2,7 @@
 
 if [[ $RUNNING_ON_AWS == "yes" ]]; then
     SERVER_INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-    SERVER_INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/)
+    SERVER_INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 
     if [[ $AUTO_FITTING_MEMORYSIZE == "yes" ]]; then
         case $SERVER_INSTANCE_TYPE in
