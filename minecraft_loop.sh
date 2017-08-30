@@ -16,7 +16,7 @@ command=$1
 shift
 
 SINGLE_RUN=0
-if [[ $1 = "single_run" ]]; then
+if [[ $command = "single_run" ]]; then
     SINGLE_RUN=1
 fi
 
