@@ -19,6 +19,6 @@ do
         rm /tmp/stop_minecraft
         exit
     else
-        java $JVM_OPTION -jar $JARFILE nogui
+        $JAVA_COMMAND $JVM_OPTION -jar $JARFILE nogui
     fi
 done
