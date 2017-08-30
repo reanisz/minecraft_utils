@@ -3,14 +3,7 @@
 ROOT=$(cd $(dirname $0);pwd)
 cd $ROOT
 
-source ./default_settings.conf
-if [[ -f ~/.minecraft.conf ]]; then
-    source ~/.minecraft.conf
-fi
-if [[ -f .minecraft.conf ]]; then
-    source .minecraft.conf
-fi
-source ./get_aws_conf.sh
+source ./load_settings.sh
 
 PLAYER_NUM=`./minecraft.sh get_players_num`
 
