@@ -13,6 +13,7 @@ fi
 if [[ -f .minecraft.conf ]]; then
     source .minecraft.conf
 fi
+source ./get_aws_conf.sh
 
 export AWS_DEFAULT_REGION="$SERVER_REGION"
 

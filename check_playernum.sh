@@ -10,6 +10,7 @@ fi
 if [[ -f .minecraft.conf ]]; then
     source .minecraft.conf
 fi
+source ./get_aws_conf.sh
 
 PLAYER_NUM=0
 if ./minecraft.sh is_running; then
