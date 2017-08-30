@@ -35,5 +35,5 @@ if [[ $RUNNING_ON_AWS == "yes" ]]; then
                 ;;
         esac
     fi
-
+    export AWS_DEFAULT_REGION="$SERVER_REGION"
 fi

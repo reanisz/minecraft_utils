@@ -8,7 +8,6 @@ cd $ROOT
 
 source ./load_settings.sh
 
-export AWS_DEFAULT_REGION="$SERVER_REGION"
 OLD_ATTACHMENT_ID=`aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[] | select(.NetworkInterfaceId == "$SERVER_EIP_ID") | .Attachment.AttachmentId'`
 
 if [[ $OLD_ATTACHMENT_ID != "" ]]; then
