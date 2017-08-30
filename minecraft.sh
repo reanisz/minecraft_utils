@@ -98,7 +98,16 @@ case $command in
         cmd_command "list"
         ;;
     get_players_num)
-        cmd_command "list" | perl -nle 'if(/There are (\d+)\/(\d+) players online/){ print $1;}'
+        if [[ $IS_RUNNING == 0 ]]; then
+            PLAYER_NUM=`cmd_command "list" | perl -nle 'if(/There are (\d+)\/(\d+) players online/){ print $1;}'`
+            if [[ $PLAYER_NUM == "" ]]; then
+                echo "0"
+            else
+                echo $PLAYER_NUM
+            fi
+        else
+            echo "0"
+        fi
         ;;
     *)
         cmd_help
