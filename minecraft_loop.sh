@@ -12,6 +12,14 @@ if [[ -f .minecraft.conf ]]; then
 fi
 source ./get_aws_conf.sh
 
+command=$1
+shift
+
+SINGLE_RUN=0
+if [[ $1 = "single_run" ]]; then
+    SINGLE_RUN=1
+fi
+
 cd $MINECRAFT_DIR
 
 while true
@@ -23,5 +31,9 @@ do
         $JAVA_COMMAND $JVM_OPTION \
             -Xms $JVM_OPTION_Xms -Xmx $JVM_OPTION_Xmx \
             -jar $JARFILE nogui
+    fi
+
+    if [[ $SINGLE_RUN == 1 ]]; then
+        exit
     fi
 done
