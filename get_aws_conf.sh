@@ -2,10 +2,14 @@
 
 if [[ $RUNNING_ON_AWS == "yes" ]]; then
     SERVER_INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-    SERVER_INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
+    SERVER_INSTANCE_TYPE=$(curl -s http://169.254.169.254/latest/meta-data/instance-type)
 
     if [[ $AUTO_FITTING_MEMORYSIZE == "yes" ]]; then
         case $SERVER_INSTANCE_TYPE in
+            "t2.micro")
+                JVM_OPTION_Xms="128M"
+                JVM_OPTION_Xmx="256M"
+                ;;
             "m4.large")
                 JVM_OPTION_Xms="4000M"
                 JVM_OPTION_Xmx="7000M"
