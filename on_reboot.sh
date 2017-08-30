@@ -13,5 +13,8 @@ rm /tmp/log_minecraft_playernum
 sed -i -e "1s/ip-.*//g" /etc/hosts
 sed -i -e "1s/$/ $(hostname)/g" /etc/hosts
 
+sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 ./mount_ebs.sh
+./attach_eip.sh
 ./minecraft.sh start
