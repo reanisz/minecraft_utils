@@ -3,6 +3,7 @@
 if [[ $RUNNING_ON_AWS == "yes" ]]; then
     SERVER_INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
     SERVER_INSTANCE_TYPE=$(curl -s http://169.254.169.254/latest/meta-data/instance-type)
+    SERVER_PRIVATE_IP=$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)
 
     if [[ $AUTO_FITTING_MEMORYSIZE == "yes" ]]; then
         case $SERVER_INSTANCE_TYPE in
