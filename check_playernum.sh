@@ -14,17 +14,17 @@ DATE=`date +%Y-%m-%d-%H:%M:%S`
 
 echo "$DATE $PLAYER_NUM" >> /tmp/log_minecraft_playernum
 
-ROW_NUM=`tail -n 6 /tmp/log_minecraft_playernum | wc -l`
+ROW_NUM=`tail -n $SERVER_SHUTDOWN_COUNT /tmp/log_minecraft_playernum | wc -l`
 
-if [[ 6 -ne $ROW_NUM ]]; then
+if [[ $SERVER_SHUTDOWN_COUNT -ne $ROW_NUM ]]; then
     exit 
 fi
 
-if tail -n 6 /tmp/log_minecraft_playernum | cut -d ' ' -f 2 | grep -v '^0$' > /dev/null 2> /dev/null; then
-    # 0じゃない行がある = 計測6回以内に1人以上参加者が居た
+if tail -n $SERVER_SHUTDOWN_COUNT /tmp/log_minecraft_playernum | cut -d ' ' -f 2 | grep -v '^0$' > /dev/null 2> /dev/null; then
+    # 0じゃない行がある = 計測$SERVER_SHUTDOWN_COUNT回以内に1人以上参加者が居た
     :
 else
-    # 0じゃない行がない = 計測6回以内に誰もログインしていない
+    # 0じゃない行がない = 計測$SERVER_SHUTDOWN_COUNT回以内に誰もログインしていない
     if ./minecraft.sh is_running; then
         ./minecraft.sh stop
         sudo shutdown -h +5 
