@@ -5,6 +5,10 @@ cd $ROOT
 
 source ./load_settings.sh
 
+./attach_eip.sh
+
+sleep 10
+
 # 最新の設定に更新する
 git fetch origin $(git rev-parse --abbrev-ref HEAD)
 git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
@@ -17,6 +21,5 @@ sed -i -e "1s/$/ $(hostname)/g" /etc/hosts
 
 sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-./attach_eip.sh
 ./mount_ebs.sh
 ./minecraft.sh start
