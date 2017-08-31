@@ -17,6 +17,6 @@ sed -i -e "1s/$/ $(hostname)/g" /etc/hosts
 
 sudo cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-./mount_ebs.sh
 ./attach_eip.sh
+./mount_ebs.sh
 ./minecraft.sh start
