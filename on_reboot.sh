@@ -9,10 +9,6 @@ source ./load_settings.sh
 sudo sed -i -e "1s/ip-.*//g" /etc/hosts
 sudo sed -i -e "1s/$/ $(hostname)/g" /etc/hosts
 
-./attach_eip.sh
-
-sleep 10
-
 # 最新の設定に更新する
 git fetch origin $(git rev-parse --abbrev-ref HEAD)
 git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
