@@ -3,6 +3,8 @@
 ROOT=$(cd $(dirname $0);pwd)
 cd $ROOT
 
+source ./load_settings.sh
+
 # 最新の設定に更新する
 git fetch origin $(git rev-parse --abbrev-ref HEAD)
 git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
