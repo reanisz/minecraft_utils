@@ -8,4 +8,4 @@ cd $ROOT
 
 source ./load_settings.sh
 
-aws ec2 associate-address --allocation-id $SERVER_EIP_ALLOCATION_ID --instance-id $SERVER_INSTANCE_ID --no-dry-run
+aws ec2 associate-address --allocation-id $SERVER_EIP_ALLOCATION_ID --instance-id $SERVER_INSTANCE_ID
